@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
-* Студент: [Azim Ametov](https://up.htmlacademy.ru/javascript/30/user/2373015).
-* Наставник: `Неизвестно`.
+- Студент: [Azim Ametov](https://up.htmlacademy.ru/javascript/30/user/2373015).
+- Наставник: `Александр Конотоп`.
 
 ---
 
