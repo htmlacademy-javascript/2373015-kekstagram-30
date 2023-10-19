@@ -27,7 +27,8 @@ const getRandomDescriptionArray = (array) => {
   return array[randomIndex];
 };
 
-const randomDescription = getRandomDescriptionArray(PHOTO_DESCRIPTION);
+// Проверка
+// const randomDescription = getRandomDescriptionArray(PHOTO_DESCRIPTION);
 
 const getRandomInteger = (min, max) => {
   const fraction = (max - min) * Math.random() * min;
@@ -39,14 +40,16 @@ const getRandomCommentsArray = (array) => {
   return array[randomIndex];
 };
 
-const getRandomComments = getRandomCommentsArray(USER_COMMENTS);
+// Проверка
+// const getRandomComments = getRandomCommentsArray(USER_COMMENTS);
 
 const getRandomNameArray = (array) => {
   const randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
 };
 
-const getRandomName = getRandomNameArray(USER_NAME);
+// Проверка
+// const getRandomName = getRandomNameArray(USER_NAME);
 
 const structure = () => {
   const array = [];
