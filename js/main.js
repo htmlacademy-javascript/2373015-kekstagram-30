@@ -48,4 +48,20 @@ const getRandomNameArray = (array) => {
 
 const getRandomName = getRandomNameArray(USER_NAME);
 
+const structure = () => {
+  const array = [];
+  for (let i = 1; i <= 25; i++) {
+    array.push({
+      id: i,
+      url: `photos/${i}.jpg`,
+      description: getRandomDescriptionArray(PHOTO_DESCRIPTION),
+      likes: getRandomInteger(15, 200),
+      comments: getRandomCommentsArray(USER_COMMENTS),
+      name: getRandomNameArray(USER_NAME),
+    });
+  }
+  return array;
+};
+structure();
 
+void (getRandomDescriptionArray, getRandomInteger, getRandomCommentsArray, getRandomNameArray);
