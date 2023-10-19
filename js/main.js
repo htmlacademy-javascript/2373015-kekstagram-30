@@ -34,3 +34,11 @@ const getRandomInteger = (min, max) => {
   return Math.round(fraction);
 };
 
+const getRandomCommentsArray = (array) => {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+};
+
+const getRandomComments = getRandomCommentsArray(USER_COMMENTS);
+
+
