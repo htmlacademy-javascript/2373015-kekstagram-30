@@ -21,3 +21,13 @@ const USER_COMMENTS = [
   'Абстрактные формы и цвета.',
   'Седой старик с бородой.',
 ];
+
+const getRandomDescriptionArray = (array) => {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+};
+
+const randomDescription = getRandomDescriptionArray(PHOTO_DESCRIPTION);
+
+
+
