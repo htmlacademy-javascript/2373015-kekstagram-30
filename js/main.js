@@ -31,8 +31,8 @@ const getRandomDescriptionArray = (array) => {
 // const randomDescription = getRandomDescriptionArray(PHOTO_DESCRIPTION);
 
 const getRandomInteger = (min, max) => {
-  const fraction = (max - min) * Math.random() * min;
-  return Math.round(fraction);
+  const randomInteger = Math.floor(Math.random() * (max - min + 1) + min);
+  return randomInteger;
 };
 
 const getRandomCommentsArray = (array) => {
@@ -68,3 +68,4 @@ const structure = () => {
 structure();
 
 void (getRandomDescriptionArray, getRandomInteger, getRandomCommentsArray, getRandomNameArray);
+
