@@ -41,4 +41,11 @@ const getRandomCommentsArray = (array) => {
 
 const getRandomComments = getRandomCommentsArray(USER_COMMENTS);
 
+const getRandomNameArray = (array) => {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+};
+
+const getRandomName = getRandomNameArray(USER_NAME);
+
 
