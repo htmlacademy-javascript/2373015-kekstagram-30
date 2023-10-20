@@ -32,7 +32,7 @@ const getRandomElement = (array) => {
   return array[randomIndex];
 };
 
-const createCommentData = (p) => {
+const createCommentData = () => {
   const getRandomUserName = getRandomElement(USERS_NAMES);
   const getRandomUserComment = getRandomElement(USERS_COMMENTS);
   return {
