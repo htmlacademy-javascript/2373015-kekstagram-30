@@ -32,32 +32,31 @@ const getRandomElement = (array) => {
   return array[randomIndex];
 };
 
-const createCommentData = () => {
-  const getRandomUserName = getRandomElement(USERS_NAMES);
-  const getRandomUserComment = getRandomElement(USERS_COMMENTS);
-  return {
-    commentId: getRandomInteger(1, 200),
-    avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-    message: getRandomUserComment,
-    name: getRandomUserName,
-  };
-
+const createCommentsData = () => {
+  const numComments = getRandomInteger(0, 30);
+  const comments = [];
+  for (let i = 1; i <= numComments; i++) {
+    const getRandomUserName = getRandomElement(USERS_NAMES);
+    const getRandomUserComment = getRandomElement(USERS_COMMENTS);
+    comments.push({
+      commentId: i,
+      avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+      message: getRandomUserComment,
+      name: getRandomUserName,
+    });
+  }
+  return comments;
 };
 
 function createPhotosData() {
   const array = [];
   for (let i = 1; i <= 25; i++) {
-    const numComments = getRandomInteger(0, 30);
-    const comments = [];
-    for (let j = 0; j < numComments; j++) {
-      comments.push(createCommentData());
-    }
     array.push({
       id: i,
       url: `photos/${i}.jpg`,
       description: getRandomElement(PHOTOS_DESCRIPTIONS),
       likes: getRandomInteger(15, 200),
-      comments: [createCommentData()],
+      comments: [createCommentsData()],
     });
   }
   return array;
