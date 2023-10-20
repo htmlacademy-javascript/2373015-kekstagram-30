@@ -15,11 +15,11 @@ const USERS_NAMES = [
 ];
 
 const USERS_COMMENTS = [
-  'Оранжевый закат над морем.',
-  'Мерцающие огоньки в городе.',
-  'Поле с разноцветными цветами.',
-  'Абстрактные формы и цвета.',
-  'Седой старик с бородой.',
+  'Всё отлично!',
+  'В целом всё неплохо. Но не всё.',
+  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
+  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
+  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
 ];
 
 const getRandomInteger = (min, max) => {
@@ -32,36 +32,37 @@ const getRandomElement = (array) => {
   return array[randomIndex];
 };
 
-const createCommentsData = (numComments) => {
-  const comments = [];
-  for (let i = 0; i < numComments; i++) {
-    const randomComment = getRandomElement(USERS_COMMENTS);
-    comments.push({
-      user: getRandomElement(USERS_NAMES),
-      text: randomComment,
-    });
-  }
-  return comments;
+const createCommentData = (p) => {
+  const getRandomUserName = getRandomElement(USERS_NAMES);
+  const getRandomUserComment = getRandomElement(USERS_COMMENTS);
+  return {
+    commentId: getRandomInteger(1, 200),
+    avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+    message: getRandomUserComment,
+    name: getRandomUserName,
+  };
+
 };
 
 function createPhotosData() {
   const array = [];
   for (let i = 1; i <= 25; i++) {
     const numComments = getRandomInteger(0, 30);
-    const comments = createCommentsData(numComments);
+    const comments = [];
+    for (let j = 0; j < numComments; j++) {
+      comments.push(createCommentData());
+    }
     array.push({
       id: i,
       url: `photos/${i}.jpg`,
       description: getRandomElement(PHOTOS_DESCRIPTIONS),
       likes: getRandomInteger(15, 200),
-      comments: comments,
+      comments: [createCommentData()],
     });
   }
   return array;
 }
 createPhotosData();
-
-console.log(createPhotosData());
 
 void (getRandomElement, getRandomInteger);
 
