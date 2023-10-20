@@ -1,4 +1,4 @@
-const PHOTO_DESCRIPTION = [
+const PHOTOS_DESCRIPTIONS = [
   'Закат над океаном.',
   'Портрет старика.',
   'Ночной город.',
@@ -6,7 +6,7 @@ const PHOTO_DESCRIPTION = [
   'Абстрактная сюрреалистичная живопись.',
 ];
 
-const USER_NAME = [
+const USERS_NAMES = [
   'Костя',
   'Родион',
   'Игорь',
@@ -14,7 +14,7 @@ const USER_NAME = [
   'Николай',
 ];
 
-const USER_COMMENTS = [
+const USERS_COMMENTS = [
   'Оранжевый закат над морем.',
   'Мерцающие огоньки в городе.',
   'Поле с разноцветными цветами.',
@@ -22,50 +22,46 @@ const USER_COMMENTS = [
   'Седой старик с бородой.',
 ];
 
-const getRandomDescriptionArray = (array) => {
-  const randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
-};
-
-// Проверка
-// const randomDescription = getRandomDescriptionArray(PHOTO_DESCRIPTION);
-
 const getRandomInteger = (min, max) => {
   const randomInteger = Math.floor(Math.random() * (max - min + 1) + min);
   return randomInteger;
 };
 
-const getRandomCommentsArray = (array) => {
+const getRandomElement = (array) => {
   const randomIndex = Math.floor(Math.random() * array.length);
   return array[randomIndex];
 };
 
-// Проверка
-// const getRandomComments = getRandomCommentsArray(USER_COMMENTS);
-
-const getRandomNameArray = (array) => {
-  const randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
+const createCommentsData = (numComments) => {
+  const comments = [];
+  for (let i = 0; i < numComments; i++) {
+    const randomComment = getRandomElement(USERS_COMMENTS);
+    comments.push({
+      user: getRandomElement(USERS_NAMES),
+      text: randomComment,
+    });
+  }
+  return comments;
 };
 
-// Проверка
-// const getRandomName = getRandomNameArray(USER_NAME);
-
-const structure = () => {
+function createPhotosData() {
   const array = [];
   for (let i = 1; i <= 25; i++) {
+    const numComments = getRandomInteger(0, 30);
+    const comments = createCommentsData(numComments);
     array.push({
       id: i,
       url: `photos/${i}.jpg`,
-      description: getRandomDescriptionArray(PHOTO_DESCRIPTION),
+      description: getRandomElement(PHOTOS_DESCRIPTIONS),
       likes: getRandomInteger(15, 200),
-      comments: getRandomCommentsArray(USER_COMMENTS),
-      name: getRandomNameArray(USER_NAME),
+      comments: comments,
     });
   }
   return array;
-};
-structure();
+}
+createPhotosData();
 
-void (getRandomDescriptionArray, getRandomInteger, getRandomCommentsArray, getRandomNameArray);
+console.log(createPhotosData());
+
+void (getRandomElement, getRandomInteger);
 
