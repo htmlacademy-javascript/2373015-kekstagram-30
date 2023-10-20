@@ -39,7 +39,7 @@ const createCommentsData = () => {
     const getRandomUserName = getRandomElement(USERS_NAMES);
     const getRandomUserComment = getRandomElement(USERS_COMMENTS);
     comments.push({
-      commentId: i,
+      Id: i,
       avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
       message: getRandomUserComment,
       name: getRandomUserName,
@@ -48,7 +48,7 @@ const createCommentsData = () => {
   return comments;
 };
 
-function createPhotosData() {
+const createPhotosData = () => {
   const array = [];
   for (let i = 1; i <= 25; i++) {
     array.push({
@@ -56,12 +56,11 @@ function createPhotosData() {
       url: `photos/${i}.jpg`,
       description: getRandomElement(PHOTOS_DESCRIPTIONS),
       likes: getRandomInteger(15, 200),
-      comments: [createCommentsData()],
+      comments: createCommentsData(),
     });
   }
   return array;
-}
+};
 createPhotosData();
 
 void (getRandomElement, getRandomInteger);
-
