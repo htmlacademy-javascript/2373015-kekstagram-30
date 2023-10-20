@@ -39,7 +39,7 @@ const createCommentsData = () => {
     const getRandomUserName = getRandomElement(USERS_NAMES);
     const getRandomUserComment = getRandomElement(USERS_COMMENTS);
     comments.push({
-      Id: i,
+      id: i,
       avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
       message: getRandomUserComment,
       name: getRandomUserName,
