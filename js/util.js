@@ -8,4 +8,4 @@ const getRandomElement = (array) => {
   return array[randomIndex];
 };
 
-export default { getRandomInteger, getRandomElement };
+export { getRandomInteger, getRandomElement };
