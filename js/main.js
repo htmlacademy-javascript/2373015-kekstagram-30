@@ -1,3 +1,4 @@
 import { createPhotosData } from './data.js';
+import { renderThumbnails } from './thumbnails.js';
 
-createPhotosData();
+renderThumbnails(createPhotosData());
