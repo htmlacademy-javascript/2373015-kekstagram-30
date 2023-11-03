@@ -1,4 +1,4 @@
-import { renderComments } from './comments';
+import { renderComments } from './comments.js';
 
 const popup = document.querySelector('.big-picture');
 const closeButton = document.querySelector('.big-picture__cancel');
