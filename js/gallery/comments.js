@@ -12,11 +12,21 @@ const createComments = (commentsData) => commentsData.map(({ avatar, message, na
   return comment;
 });
 
-const renderComments = (commentsData) => {
-  container.replaceChildren(...createComments(commentsData));
-  shownCounter.textContent = commentsData.length;
+const currentCommentsData = [];
+
+const onLoaderButtonClick = () => {
+  container.append(...createComments(currentCommentsData.splice(0, currentCommentsData.step)));
+  shownCounter.textContent = container.childElementCount;
+  loaderButton.classList.toggle('hidden', !currentCommentsData.length);
+};
+
+const renderComments = (commentsData, step = 5) => {
+  currentCommentsData.splice(0, Infinity, ...commentsData);
+  currentCommentsData.step = step;
+  container.replaceChildren();
   totalCounter.textContent = commentsData.length;
-  loaderButton.classList.add('hidden');
+  loaderButton.addEventListener('click', onLoaderButtonClick);
+  loaderButton.click();
 };
 
 export { renderComments };
