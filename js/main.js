@@ -1,5 +1,5 @@
 import { renderGallery } from './gallery/main.js';
-import { setSubmitDisabled } from './upload/main.js';
+import { setSubmitDisabled, resetForm } from './upload/main.js';
 import { renderStatus, hideErrorAfterDelay } from './status.js';
 import { request } from './util.js';
 
@@ -9,6 +9,7 @@ document.addEventListener('formdata', async (event) => {
   try {
     setSubmitDisabled(true);
     await request(baseURL, { method: 'post', body: event.formData });
+    resetForm();
     renderStatus('success');
   } catch {
     renderStatus('error');
