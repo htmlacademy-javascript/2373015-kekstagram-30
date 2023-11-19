@@ -1,3 +1,12 @@
+const request = async (url, options) => {
+  const response = await fetch(url, options);
+
+  if (!response.ok) {
+    throw new Error(response.status);
+  }
+  return response.json();
+};
+
 const getRandomInteger = (min, max) => {
   const randomInteger = Math.floor(Math.random() * (max - min + 1) + min);
   return randomInteger;
@@ -8,4 +17,4 @@ const getRandomElement = (array) => {
   return array[randomIndex];
 };
 
-export { getRandomInteger, getRandomElement };
+export { request, getRandomInteger, getRandomElement };
