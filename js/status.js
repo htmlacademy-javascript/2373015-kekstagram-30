@@ -17,7 +17,6 @@ const renderStatus = (type, options = {}) => {
   };
 
   document.body.append(status);
-  document.addEventListener('keydown', onDocumentKeyDown);
 
   if (options.hideAfterDelay) {
     window.setTimeout(() => status.remove(), options.hideAfterDelay);
