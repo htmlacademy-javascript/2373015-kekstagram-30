@@ -5,13 +5,14 @@ const renderStatus = (type, options = {}) => {
   const onDocumentKeyDown = (event) => {
     if (event.key.startsWith('Esc') && !event.target.type?.startsWith('text')) {
       status.click();
+      event.stopPropagation();
     }
   };
 
   const onStatusClick = (event) => {
     if (event.target.matches(`.${type}, .${type}__button`)) {
       status.remove();
-      document.removeEventListener('keydown', onDocumentKeyDown);
+      document.removeEventListener('keydown', onDocumentKeyDown, true);
     }
   };
 
@@ -22,7 +23,7 @@ const renderStatus = (type, options = {}) => {
     window.setTimeout(() => status.remove(), options.hideAfterDelay);
   } else {
     status.addEventListener('click', onStatusClick);
-    document.addEventListener('keydown', onDocumentKeyDown);
+    document.addEventListener('keydown', onDocumentKeyDown, true);
   }
 };
 
