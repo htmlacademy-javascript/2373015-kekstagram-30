@@ -1,6 +1,6 @@
-const renderStatus = (type) => {
+const renderStatus = (type, options = {}) => {
   const template = document.querySelector(`#${type}`);
-  const status = template.content.querySelector(`.${type}`);
+  const status = template.content.querySelector(`.${type}`).cloneNode(true);
 
   const onDocumentKeyDown = (event) => {
     if (event.key.startsWith('Esc') && !event.target.type?.startsWith('text')) {
@@ -8,28 +8,22 @@ const renderStatus = (type) => {
     }
   };
 
-  status.addEventListener('click', (event) => {
+  const onStatusClick = (event) => {
     if (event.target.matches(`.${type}, .${type}__button`)) {
       status.remove();
       document.removeEventListener('keydown', onDocumentKeyDown);
     }
-  });
+  };
+
   document.body.append(status);
   document.addEventListener('keydown', onDocumentKeyDown);
-};
 
-const hideErrorMessage = (errorClass) => {
-  const timeout = 5000;
-  if (errorClass) {
-    setTimeout(() => {
-      errorClass.classList.add('hidden');
-    }, timeout);
+  if (options.hideAfterDelay) {
+    window.setTimeout(() => status.remove(), options.hideAfterDelay);
+  } else {
+    status.addEventListener('click', onStatusClick);
+    document.addEventListener('keydown', onDocumentKeyDown);
   }
 };
 
-const hideErrorAfterDelay = () => {
-  const errorMessageClass = document.querySelector('.data-error');
-  hideErrorMessage(errorMessageClass);
-};
-
-export { renderStatus, hideErrorAfterDelay };
+export { renderStatus };
