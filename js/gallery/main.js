@@ -1,6 +1,7 @@
 import { renderThumbnails } from './thumbnails.js';
 import { renderPopup } from './popup.js';
 import { renderFilters } from './filters.js';
+import { applyRandomFilter } from './data.js';
 
 const renderGallery = (photosData) => {
   renderFilters();
@@ -10,6 +11,9 @@ const renderGallery = (photosData) => {
     switch (event.detail) {
       case 'filter-default':
         renderThumbnails(photosData);
+        break;
+      case 'filter-random':
+        renderThumbnails(applyRandomFilter(photosData));
         break;
     }
   });
