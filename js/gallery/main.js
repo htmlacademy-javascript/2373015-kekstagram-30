@@ -3,11 +3,11 @@ import { renderPopup } from './popup.js';
 import { renderFilters } from './filters.js';
 import { applyRandomFilter, applyDiscussedFilter } from './data.js';
 
-const renderGallery = (photosData) => {
+const renderGallery = (photosData, reduceFrequency) => {
   renderFilters();
   renderThumbnails(photosData);
 
-  document.addEventListener('filterSelect', (event) => {
+  document.addEventListener('filterSelect', reduceFrequency((event) => {
     switch (event.detail) {
       case 'filter-default':
         renderThumbnails(photosData);
@@ -19,7 +19,7 @@ const renderGallery = (photosData) => {
         renderThumbnails(applyDiscussedFilter(photosData));
         break;
     }
-  });
+  }));
 
   document.addEventListener('thumbnailSelect', (event) => {
     renderPopup(event.detail);
