@@ -6,10 +6,15 @@ import { setEffect, getEffectValue, resetEffect } from './effects.js';
 const form = document.querySelector('.img-upload__form');
 const preview = document.querySelector('.img-upload__preview img');
 const submitButton = document.querySelector('.img-upload__submit');
+const thumbnails = document.querySelectorAll('.effects__preview');
 
 const renderFile = (file) => {
   preview.src = URL.createObjectURL(file);
   openPopup();
+
+  thumbnails.forEach((thumbnail) => {
+    thumbnail.style.backgroundImage = `url(${preview.src})`;
+  });
 };
 
 const setSubmitDisabled = (flag) => {
