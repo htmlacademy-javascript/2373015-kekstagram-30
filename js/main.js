@@ -8,7 +8,7 @@ const baseURL = 'https://30.javascript.pages.academy/kekstagram';
 document.addEventListener('formdata', async (event) => {
   try {
     setSubmitDisabled(true);
-    await request(baseURL, { method: 'post', body: event.formData });
+    await request(`${baseURL}/`, { method: 'post', body: event.formData });
     resetForm();
     renderStatus('success');
   } catch {
