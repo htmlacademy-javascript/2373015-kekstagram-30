@@ -8,17 +8,20 @@ const createThumbnailClickHandler = ({ url, description, likes, comments }) => (
 
 const renderThumbnails = (photosData) => {
   const fragment = document.createDocumentFragment();
+  const thumbnails = container.querySelectorAll('.picture');
+
+  thumbnails.forEach((existingThumbnail) => existingThumbnail.remove());
 
   photosData.forEach(({ url, description, likes, comments }) => {
-    const thumbnail = template.content.querySelector('.picture').cloneNode(true);
+    const newThumbnail = template.content.querySelector('.picture').cloneNode(true);
 
-    thumbnail.querySelector('.picture__img').src = url;
-    thumbnail.querySelector('.picture__img').alt = description;
-    thumbnail.querySelector('.picture__likes').textContent = likes;
-    thumbnail.querySelector('.picture__comments').textContent = comments.length;
-    thumbnail.addEventListener('click', createThumbnailClickHandler({ url, description, likes, comments }));
+    newThumbnail.querySelector('.picture__img').src = url;
+    newThumbnail.querySelector('.picture__img').alt = description;
+    newThumbnail.querySelector('.picture__likes').textContent = likes;
+    newThumbnail.querySelector('.picture__comments').textContent = comments.length;
+    newThumbnail.addEventListener('click', createThumbnailClickHandler({ url, description, likes, comments }));
 
-    fragment.append(thumbnail);
+    fragment.append(newThumbnail);
   });
   container.append(fragment);
 };
