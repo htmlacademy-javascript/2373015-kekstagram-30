@@ -7,13 +7,11 @@ const request = async (url, options) => {
   return response.json();
 };
 
-const DEBOUNCE_DELAY = 500;
-
-const debounce = (callback) => {
+const debounce = (callback, timeoutDelay = 500) => {
   let timeoutId;
   return (...rest) => {
     window.clearTimeout(timeoutId);
-    timeoutId = window.setTimeout(() => callback(...rest), DEBOUNCE_DELAY);
+    timeoutId = window.setTimeout(() => callback(...rest), timeoutDelay);
   };
 };
 

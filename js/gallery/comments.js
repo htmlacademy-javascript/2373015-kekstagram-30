@@ -16,7 +16,7 @@ const currentCommentsData = [];
 
 const onLoaderButtonClick = () => {
   container.append(...createComments(currentCommentsData.splice(0, currentCommentsData.step)));
-  shownCounter.textContent = String(container.childElementCount);
+  shownCounter.textContent = container.childElementCount;
   loaderButton.classList.toggle('hidden', !currentCommentsData.length);
 };
 
